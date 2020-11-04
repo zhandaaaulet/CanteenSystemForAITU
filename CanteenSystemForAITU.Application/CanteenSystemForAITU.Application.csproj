@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CanteenSystemForAITU.Database\CanteenSystemForAITU.Database.csproj" />
+    <ProjectReference Include="..\CanteenSystemForAITU.Domain\CanteenSystemForAITU.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
