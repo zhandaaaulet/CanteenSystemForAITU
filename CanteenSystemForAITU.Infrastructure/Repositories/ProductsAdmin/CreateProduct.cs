@@ -1,10 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-using CanteenSystemForAITU.Domain.Models;
+﻿using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Infrastructure.Data;
+
+
 
 
 namespace CanteenSystemForAITU.Infrastructure.ProductsAdmin
@@ -20,12 +18,12 @@ namespace CanteenSystemForAITU.Infrastructure.ProductsAdmin
 
         public async Task<Response> Do(Request request)
         {
-            var product = new Domain.Models.Product
+            var product = new Domain.Models.Product()
             {
 
                 Name = request.Name,
                 Description = request.Description,
-                Value = request.Value
+                
             };
             _context.Items.Add(product);
 
@@ -36,7 +34,7 @@ namespace CanteenSystemForAITU.Infrastructure.ProductsAdmin
                 Id = product.Id,
                 Name = product.Name,
                 Description = product.Description,
-                Value = product.Value
+                
             };
         }
         public class Request

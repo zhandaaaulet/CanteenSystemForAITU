@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace CanteenSystemForAITU.UI.Controllers
 {
     [Route("[controller]")]
@@ -21,19 +22,26 @@ namespace CanteenSystemForAITU.UI.Controllers
         }
 
         [HttpGet("products")]
-        public IActionResult GetProducts() => Ok(new GetProducts(_ctx).Do());
+        public IActionResult GetProducts()
+        {
+         return Ok(new GetProducts(_ctx).Do());
+        }
 
         [HttpGet("products/{id}")]
         public IActionResult GetProduct(int id) => Ok(new GetProduct(_ctx).Do(id));
 
         [HttpPost("products")]
-        public async Task<IActionResult> CreateProduct([FromBody] CreateProduct.Request request) => Ok((await new CreateProduct(_ctx).Do(request)));
+        public async Task<IActionResult> CreateProduct([FromBody] CreateProduct.Request request) => 
+            Ok(await new CreateProduct(_ctx).Do(request));
 
         [HttpDelete("products/{id}")]
         public async Task<IActionResult> DeleteProduct(int id) => Ok((await new DeleteProduct(_ctx).Do(id)));
 
         [HttpPut("products")]
         public async Task<IActionResult> UpdateProduct([FromBody] UpdateProduct.Request request)
-            => Ok((await new UpdateProduct(_ctx).Do(request)));
+        {
+            return Ok((await new UpdateProduct(_ctx).Do(request)));
+        }
+           
     }
 }

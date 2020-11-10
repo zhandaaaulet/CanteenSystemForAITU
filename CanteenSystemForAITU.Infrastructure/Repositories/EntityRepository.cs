@@ -2,7 +2,6 @@
 using Domain.Models;
 using Domain.Repositories;
 using Infrastructure.Data;
-using Infrastructure.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using ProjectForAITUCanteen.Domain.Models.Auth;
 using System;

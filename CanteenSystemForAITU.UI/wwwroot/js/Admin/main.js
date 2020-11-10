@@ -1,44 +1,46 @@
 ﻿var app = new Vue({
     el: '#app',
     data: {
-        editing: false,
+        id: 0,
         loading: false,
         objectIndex: 0,
         productModel: {
-            id: 0,
             name: "Product Name",
             description: "Product Description",
-            value: 1.99
+            
         },
-        products: []
+        products: [],
     },
     mounted() {
         this.getProducts();
     },
+
     methods: {
         getProduct(id) {
             this.loading = true;
-            axios.get('/admin/products/' + id)
+            axios.get('/Admin/products/' + id)
                 .then(res => {
                     console.log(res);
                     var product = res.data;
                     this.productModel = {
                         id: product.id,
                         name: product.name,
-                        description: product.description,
-                        value: product.value
+                        description: product.description
                     };
+
+                    /*value: product.value,*/
                 })
                 .catch(err => {
                     console.log(err);
                 })
                 .then(() => {
                     this.loading = false;
-                })
+                });
         },
+
         getProducts() {
             this.loading = true;
-            axios.get('/admin/products')
+            axios.get('/Admin/products')
                 .then(res => {
                     console.log(res);
                     this.products = res.data;
@@ -50,9 +52,11 @@
                     this.loading = false;
                 })
         },
+
+
         createProduct() {
             this.loading = true;
-            axios.post('/admin/products', this.productModel)
+            axios.post('/Admin/products', this.productModel)
                 .then(res => {
                     console.log(res.data);
                     this.products.push(res.data);
@@ -62,12 +66,13 @@
                 })
                 .then(() => {
                     this.loading = false;
-                    this.editing = false;
                 })
         },
+
         updateProduct() {
             this.loading = true;
-            axios.put('/admin/products', this.productModel)
+            
+            axios.put('/Admin/products', this.productModel)
                 .then(res => {
                     console.log(res.data);
                     this.products.splice(this.objectIndex, 1, res.data);
@@ -77,12 +82,12 @@
                 })
                 .then(() => {
                     this.loading = false;
-                    this.editing = false;
                 })
         },
+
         deleteProduct(id, index) {
             this.loading = true;
-            axios.get('/admin/products/' + id)
+            axios.delete('/Admin/products/' + id)
                 .then(res => {
                     console.log(res);
                     this.products.splice(index, 1);
@@ -94,17 +99,14 @@
                     this.loading = false;
                 })
         },
+
+
         editProduct(id, index) {
             this.objectIndex = index;
             this.getProduct(id);
-            this.editing = true;
-        },
-        cancel() {
-            this.editing = false;
         }
-
     },
     computed: {
-
+       
     }
 });

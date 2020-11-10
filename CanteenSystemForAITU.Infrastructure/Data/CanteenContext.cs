@@ -1,5 +1,5 @@
 ﻿using CanteenSystemForAITU.Domain.Models;
-using Infrastructure.Data.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using ProjectForAITUCanteen.Domain.Models.Auth;
 using System;

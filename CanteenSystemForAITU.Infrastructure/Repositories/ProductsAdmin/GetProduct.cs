@@ -21,7 +21,7 @@ namespace CanteenSystemForAITU.Infrastructure.ProductsAdmin
         {
             Name = x.Name,
             Description = x.Description,
-            Value = $"$ {x.Value:N2}", //1100.50 => 1,100.50 => $ 1,100.50
+            /*Value = x.Value */
         }).FirstOrDefault();
 
     }
@@ -30,6 +30,6 @@ namespace CanteenSystemForAITU.Infrastructure.ProductsAdmin
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Value { get; set; }
+        /*public decimal Value { get; set; }*/
     }
 }
